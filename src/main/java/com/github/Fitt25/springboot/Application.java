@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Application {
 
+    private final SoftwareEngineerService softwareEngineerService;
+
+    public Application(SoftwareEngineerService softwareEngineerService) {
+        this.softwareEngineerService = softwareEngineerService;
+    }
+
     public static void main(String[] args) {
 
         SpringApplication.run(Application.class, args);
@@ -18,3 +24,4 @@ public class Application {
         return "Hello World Spring Boot!";
     }
 }
+

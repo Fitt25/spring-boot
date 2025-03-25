@@ -1,6 +1,6 @@
 services:
   db:
-    container_name: postgres
+    container_name: postgres-spring-boot
     image: postgres:latest
     environment:
       POSTGRES_USER: amigoscode
@@ -14,9 +14,9 @@ services:
       - db
     restart: unless-stopped
 
-  networks:
-    db:
-      driver: bridge
+networks:
+  db:
+    driver: bridge
 
-  volumes:
-    db:
+volumes:
+  db:

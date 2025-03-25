@@ -1,18 +1,32 @@
 package com.github.Fitt25.springboot;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+@Entity
 public class SoftwareEngineer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String techStack;
+    @Column(columnDefinition = "TEXT")
+    private String recommendation;
 
     public SoftwareEngineer(Integer id,
                             String name,
-                            String techStack) {
+                            String techStack,
+                            String recommendation) {
         this.id = id;
         this.name = name;
         this.techStack = techStack;
+        this.recommendation = recommendation;
+
+    }
+
+    public SoftwareEngineer() {
+
     }
 
     public Integer getId() {
@@ -39,15 +53,23 @@ public class SoftwareEngineer {
         this.techStack = techStack;
     }
 
+    public String getRecommendation() {
+        return recommendation;
+    }
+
+    public void setRecommendation(String recommendation) {
+        this.recommendation = recommendation;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         SoftwareEngineer that = (SoftwareEngineer) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(techStack, that.techStack);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(techStack, that.techStack) && Objects.equals(recommendation, that.recommendation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, techStack);
+        return Objects.hash(id, name, techStack, recommendation);
     }
 }
